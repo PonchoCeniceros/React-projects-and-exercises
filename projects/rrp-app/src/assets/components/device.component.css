@@ -1,0 +1,106 @@
+.device-padding {
+  padding: 10px;
+  padding-left: 15px;
+}
+
+.device-title {
+  background-color: #2a3e59;
+  width: 100%;
+  height: 40px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.title-info {
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+
+.device-delete-button {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.delete-button {
+  border-top-right-radius: 5px;
+  background-color: #2a3e59;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 15px;
+  padding-top: 8px;
+  float: right;
+}
+
+
+
+.device-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding-top: 4px;
+  padding-left: 8px;
+}
+
+.device-ip {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  padding-top: 2px;
+  padding-left: 8px;
+  font-weight: lighter;
+}
+
+.device-box {
+  padding: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 40px;
+}
+
+.status-banner {
+  font-family: 'Inter', sans-serif;
+  padding-left: 4px;
+  padding-top: 4px;
+  font-weight: lighter;
+  font-size: 12px;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.device-status {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding-left: 4px;
+  padding-top: 1px;
+  flex: 0 0 63%;
+  max-width: 63%;
+}
+
+.device-card {
+  background-color: #ffffff;
+  /* width: 449px; */
+  width: 100%;
+  height: 92px;
+  border-radius: 5px;
+  color: black;
+  box-shadow: 2px 1px 5px black;
+}
+
+
+.device-button {
+  padding-left: 38px;
+  padding-right: 38px;
+  border: none;
+  background-color: #2a3e59;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  flex: 0 0 36%;
+  max-width: 36%;
+}
+
+.device-button:hover {
+  background-color: #5274A1;
+}

@@ -1,0 +1,72 @@
+.rrp-modal {
+  background-color: #EEEEF0;
+}
+
+/* .rrp-modal */
+
+.rrp-modal-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.rrp-modal-full-col {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.rrp-modal-full-col label {
+  padding: 10px;
+}
+
+.rrp-modal-full-col div {
+  padding: 10px;
+}
+
+.rrp-modal-full-col div input {
+  width: 100%;
+}
+
+.rrp-modal-full-col div textarea {
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+.rrp-modal-half-col {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.rrp-modal-half-col label {
+  padding: 10px;
+}
+
+.rrp-modal-half-col div {
+  padding: 10px;
+}
+
+
+.rrp-modal-half-col button {
+
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+.rrp-modal-half-col div input {
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+.rrp-modal-button {
+  border: none;
+  background-color: #2a3e59;
+  border-radius: 5px;
+  color: white;
+  font-size: 13px;
+  flex: 0 0 36%;
+height: 25px;
+}
+
+.rrp-modal-button:hover {
+  background-color: #5274A1;
+}

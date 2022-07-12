@@ -1,0 +1,101 @@
+<script type="text/babel" data-plugins="proposal-class-properties" data-presets="env,react">
+  /**
+   * REDUX pattern
+   */
+  
+  // Actions
+  const increment = () => ({ type: 'increment' });
+  const decrement = () => ({ type: 'decrement' });
+  
+  // Reducers
+  const countReducer = (count = 0, action) => {
+    switch (action.type) { 
+      case 'increment':
+            return count + 1;
+      case 'decrement':
+            return count - 1;
+      default:
+            return count;
+    }
+  };
+
+  const rootReducer = Redux.combineReducers({
+    count: countReducer,
+  });
+
+  // Store
+  const store = Redux.createStore(rootReducer);
+
+
+  /**
+   * Component
+   */
+  const Counter = props => {
+
+      return (
+          <div>
+              <button
+                className="increment"
+                onClick={props.increment}
+              >
+                Increment
+              </button>
+              <button
+                className="decrement"
+                onClick={props.decrement}
+              >
+                Decrement
+              </button>
+              Current Count: <span>{props.count}</span>
+          </div>
+      );
+  };
+
+
+  /**
+   * Interface store with component
+   */
+
+  // maping state with props
+  const mapStateToProps = state => {
+    return { count: state.count };
+  };
+  
+  // maping distpach actions to props
+  const mapDispatchToProps = {
+    increment,
+    decrement
+  };
+  // connect store with component
+  const WrappedCounter = ReactRedux.connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Counter);
+
+
+  /**
+   * Rendering
+   */
+  ReactDOM.render(
+      <ReactRedux.Provider store={store}>
+          <WrappedCounter />
+      </ReactRedux.Provider>, 
+      document.querySelector('#root')
+  );
+</script>
+
+<!--The App component above will be rendered into this-->
+<div id="root"></div>
+
+
+<!--No need to change anything after this line!-->
+<!--No need to change anything after this line!-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.0.0/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/preset-env-standalone@7.0.0/babel-preset-env.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/redux@4.0.1/dist/redux.js"></script>
+<script src="https://unpkg.com/react-redux@5.0.6/dist/react-redux.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />

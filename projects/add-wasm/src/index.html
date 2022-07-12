@@ -1,0 +1,101 @@
+
+<script src="./add.mjs"></script>
+<script type="text/babel" data-presets="env,react">
+  
+  const useWasmAdd = () => {
+    const [add, setAdd] = React.useState(null);
+  
+    React.useEffect(() => {
+      // import createModule from add.mjs
+      createModule().then(Module => {
+        setAdd(() => Module.cwrap('add', 'number', ['number', 'number']));
+      });
+    }, []);
+
+    return add;
+  };
+
+
+  const Header = () => {
+    return (
+      <div>
+        <div className="flex flex-wrap pb-2 bg-black">
+          <h1 className="flex-none pl-20 pt-2 w-full text-2xl font-semibold text-white">
+            Add two numbers
+          </h1>
+          <div className="pl-20 uppercase text-sm text-pink-300">
+            with web assembly
+          </div>
+        </div>
+        <div className="w-full">
+          <div className="text-xs bg-green-300 text-green-300 pb-2"></div>
+          <div className="text-xs bg-blue-300 text-blue-300 pb-2"></div>
+          <div className="text-xs bg-purple-300 text-purple-300 pb-2"></div>
+          <div className="text-xs bg-orange-300 text-orange-300 pb-2"></div>
+          <div className="text-xs bg-yellow-300 text-yellow-300 pb-2"></div>
+        </div>
+      </div>
+    );
+  };
+
+  const AddComponent = () => {
+    // hooks
+    const [op1, setOp1] = React.useState(0);
+    const [op2, setOp2] = React.useState(0);
+    const [ans, setAns] = React.useState(0);
+    // custom hook provides add function
+    const add = useWasmAdd();
+
+    if (!add) {
+      return 'Loading webassembly...';
+    }
+
+    return (
+      <div className="m-auto px-40">
+        <div className="grid grid-cols-5 gap-0.5 content-center pt-10">
+          <input
+            className="text-center text-5xl outline-0 px-30 font-semibold"
+            type="text"
+            maxlength="7"
+            value={op1}
+            onChange={event => setOp1(event.target.value)}
+          />
+          <div className="text-center text-5xl">+</div>
+          <input
+            className="text-center text-5xl outline-0 px-30 font-semibold"
+            type="text"
+            maxlength="7"
+            value={op2}
+            onChange={event => setOp2(event.target.value)}
+          />
+          <div className="text-center text-5xl">=</div>
+          <button
+            className="text-center text-5xl font-semibold"
+            onClick={() => setAns(add(op1, op2))}>
+            {ans}
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const App = () => {
+    return (
+      <div className="font-mono">
+        <Header className="fixed"/>
+        <AddComponent className="static"/>
+      </div>
+    );  
+  }
+ 
+  ReactDOM.render(<App />, document.querySelector('#root'));
+</script>
+
+<div id="root"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.0.0/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/preset-env-standalone@7.0.0/babel-preset-env.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>

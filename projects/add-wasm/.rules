@@ -1,0 +1,51 @@
+/**
+ * Position
+ * Utilities for controlling how an element is positioned in the DOM.
+ */
+relative  /* postion: relative */
+
+/**
+ * Flex
+ * Utilities for controlling how flex items both grow and shrink.
+ */
+flex      /*  */
+flex-wrap /* Utilities for controlling how flex items wrap; flex-wrap: wrap */
+flex-none /* flex: none */
+
+grid
+grid-cols-5
+gap-0.5
+
+items-baseline
+content-center
+
+outline-0
+
+bg-black
+bg-green-300
+
+text-white
+text-2xl
+text-sm
+text-pink-300
+text-green-300
+text-center
+text-5xl
+uppercase
+
+font-semibold
+font-semibold
+font-mono
+
+pb-2
+pl-20
+pt-2
+pl-20
+px-40
+pt-10
+px-30
+pb-2
+m-auto
+w-full
+
+

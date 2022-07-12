@@ -1,0 +1,52 @@
+<script type="text/babel" data-presets="env,react">
+  const useState = React.useState;
+  const useEffect = React.useEffect;
+
+  const usePosts = () => {
+    const [posts, setPosts] = useState([]);
+    
+    useEffect(() => {
+      fetch(`https://jsonplaceholder.typicode.com/posts`, {
+        "mode": "cors",
+        "credentials": "omit"
+      })
+      .then(res => res.json())
+      .then(data => setPosts(data))
+  
+    }, []);
+  
+    return posts;
+  };
+
+  const App = () => {
+    // Add in code here to use the 'usePosts' hook.
+    const posts = usePosts();
+
+    const renderedPosts = posts.map((post) => {
+        return <li key={post.id}>{post.title}</li>;
+    });
+    
+    return (
+        <div>
+            <h3>Posts</h3>
+            <ul>{renderedPosts}</ul>
+        </div>
+    );
+  };
+
+  ReactDOM.render(<App />, document.querySelector('#root'));
+</script>
+
+
+<!--The App component above will be rendered into this-->
+<div id="root"></div>
+
+
+<!--No need to change anything after this line!-->
+<!--No need to change anything after this line!-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.0.0/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/preset-env-standalone@7.0.0/babel-preset-env.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />

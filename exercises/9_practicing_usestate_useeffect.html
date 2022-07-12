@@ -1,0 +1,56 @@
+<script type="text/babel" data-presets="env,react">
+ 
+  /**
+   *  Take a look at the following code. It is identical to the last question, except 
+   *  now useEffect has an array with a single argument inside of it.
+   *  How many time would you expect to see the log statement after a user clicks on the button three times?
+   *  ANS:
+   *  I would see four console log of 'TEST!'
+   *  
+   *
+   */
+  const useState = React.useState;
+  const useEffect = React.useEffect;
+  
+  const URL = 'https://jsonplaceholder.typicode.com/users';
+
+  const App = () => {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        // Add code here to fetch some users with axios and the URL variable
+        // then update the 'users' piece of state
+        axios
+            .get(URL, { params: { _start: 0, _limit: 10 } })
+            .then(resp => setUsers(resp.data))
+            .catch(err => console.log(err.message));
+    }, []);
+
+    const renderedUsers = users.map((user) => {
+        return <li key={user.id}>{user.name}</li>;
+    });
+    
+    return (
+        <ul>
+            {renderedUsers}
+        </ul>
+    );
+  }
+
+  ReactDOM.render(<App />, document.querySelector('#root'));
+</script>
+
+
+<!--The App component above will be rendered into this-->
+<div id="root"></div>
+
+
+<!--No need to change anything after this line!-->
+<!--No need to change anything after this line!-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.0.0/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/preset-env-standalone@7.0.0/babel-preset-env.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
